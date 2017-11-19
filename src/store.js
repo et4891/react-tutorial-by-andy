@@ -6,3 +6,5 @@ const rootReducers = combineReducers({
 });
 
 const store = createStore(rootReducers);
+
+export default store;
