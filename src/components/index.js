@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addStudent} from "../actions/studentActions";
+import {addStudent, fetchStudents} from "../actions/studentActions";
 
 class App extends Component {
   state = {
@@ -13,18 +13,16 @@ class App extends Component {
 
   render() {
     // This will have access to the store object
-    // console.log(this.props.store);
-    // console.log(this.props.store);
-    const {addStudent} = this.props;
+    // console.log(this.props);
+    const {addStudent, fetchStudents} = this.props;
     const {students} = this.props.store;
-    console.log(students);
 
     return (
       <div className="App">
         <p className="App-intro">Hello World </p>
         <ul>
           {students.map((student, index) => (
-            <li key={index}>{student.name}</li>
+            <li key={index}>{student.firstName}</li>
           ))}
         </ul>
 
@@ -33,6 +31,8 @@ class App extends Component {
           addStudent(this.state.value);
         }}>Add
         </button>
+
+        <button onClick={fetchStudents}>Fetch Students</button>
       </div>
     );
   }
@@ -42,4 +42,4 @@ const mapStateToPros = (store) => {
   return {store};
 };
 
-export default connect(mapStateToPros, {addStudent})(App);
+export default connect(mapStateToPros, {addStudent, fetchStudents})(App);

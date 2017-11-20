@@ -1,5 +1,5 @@
 import {combineReducers, applyMiddleware, createStore} from 'redux';
-import promiseMiddleWare from 'redux-promise';
+import thunk from 'redux-thunk';
 import StudentReducer from './reducers/studentReducers'
 
 const rootReducers = combineReducers({
@@ -8,7 +8,8 @@ const rootReducers = combineReducers({
 
 const store = createStore(
   rootReducers,
-  applyMiddleware(promiseMiddleWare)
+  {},
+  applyMiddleware(thunk)
 );
 
 export default store;
